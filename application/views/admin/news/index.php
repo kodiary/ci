@@ -2,6 +2,21 @@
 $this->load->view('admin/header'); 
 ?>
 <h1>News</h1>
+<a href="<?php echo site_url('admin/news/add')?>" class="btn btn-info">Add New News</a>
+<hr>
+<?php
+if($this->session->flashdata('success'))
+{
+	?>
+
+<div class="alert alert-success" role="alert">
+  <?php
+	echo $this->session->flashdata('success');
+	?>
+</div>
+<?php
+}?>
+
 <table class="table table-bordered">
 	<tr>
 		<th>Title</th>
