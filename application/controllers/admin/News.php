@@ -26,4 +26,24 @@ class News extends CI_Controller
 		redirect('admin/news/index');
 	}
 
+	function edit($id)
+	{
+		$data['news'] = $this->news_model->getById($id);
+		$this->load->view('admin/news/edit',$data);
+	}
+
+	function update($id)
+	{
+		$this->news_model->update($id);
+		$this->session->set_flashdata('success','News updated successfully');
+		redirect('admin/news/index');
+	}
+
+	function delete($id)
+	{
+		$this->news_model->delete($id);
+		$this->session->set_flashdata('success','News deleted successfully');
+		redirect('admin/news/index');
+	} 
+
 }

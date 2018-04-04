@@ -31,7 +31,10 @@ if($this->session->flashdata('success'))
 		<tr>
 			<td><?php echo $n->title;?></td>
 			<td><?php echo $n->author;?></td>
-			<td><a href="" class="btn btn-primary">Edit</a> <a href="" class="btn btn-danger">Delete</a></td>
+			<td>
+				<a href="<?php echo site_url('admin/news/edit/'.$n->id)?>" class="btn btn-primary">Edit</a> 
+				<a href="<?php echo site_url('admin/news/delete/'.$n->id)?>" class="btn btn-danger">Delete</a>
+			</td>
 		</tr>
 		<?php
 	}
