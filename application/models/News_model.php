@@ -1,10 +1,16 @@
 <?php
 class News_model extends CI_Model
 {
-	function getAll()
+	function getAll($limit,$offset)
 	{
+		$this->db->limit($limit);
+		$this->db->offset($offset);
 		$this->db->order_by('id DESC');
 		return $this->db->get('news')->result();
+	}
+	function countAll()
+	{
+		return $this->db->get('news')->num_rows();
 	}
 	function getById($id)
 	{

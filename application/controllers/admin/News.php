@@ -8,9 +8,14 @@ class News extends CI_Controller
 			redirect('admin');
 		$this->load->model('news_model');
 	}
-	function index()
+	function index($offset=0)
 	{
-		$data['news'] = $this->news_model->getAll();
+		$this->load->library('pagination');
+		$config['base_url'] = site_url('admin/news/index');
+		$config['total_rows'] = $this->news_model->countAll();
+		$config['per_page'] = 3;
+		$this->pagination->initialize($config);
+		$data['news'] = $this->news_model->getAll($config['per_page'],$offset);
 		$this->load->view('admin/news/index',$data);
 	}
 

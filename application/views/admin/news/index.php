@@ -40,6 +40,7 @@ if($this->session->flashdata('success'))
 	}
 	?>
 </table>
+<?php echo $this->pagination->create_links();?>
 <?php
 $this->load->view('admin/footer'); 
 ?>
