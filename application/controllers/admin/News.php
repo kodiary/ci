@@ -14,6 +14,7 @@ class News extends CI_Controller
 		$config['base_url'] = site_url('admin/news/index');
 		$config['total_rows'] = $this->news_model->countAll();
 		$config['per_page'] = 3;
+		$config['reuse_query_string'] = TRUE;
 		$this->pagination->initialize($config);
 		$data['news'] = $this->news_model->getAll($config['per_page'],$offset);
 		$this->load->view('admin/news/index',$data);

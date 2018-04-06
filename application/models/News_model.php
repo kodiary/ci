@@ -3,6 +3,12 @@ class News_model extends CI_Model
 {
 	function getAll($limit,$offset)
 	{
+		$keyword = $this->input->get('keyword');
+		if($keyword){
+			$this->db->like(array('title'=>$keyword));
+			$this->db->or_like(array('description'=>$keyword));
+			$this->db->or_like(array('author'=>$keyword));
+		}
 		$this->db->limit($limit);
 		$this->db->offset($offset);
 		$this->db->order_by('id DESC');
@@ -10,6 +16,12 @@ class News_model extends CI_Model
 	}
 	function countAll()
 	{
+		$keyword = $this->input->get('keyword');
+		if($keyword){
+			$this->db->like(array('title'=>$keyword));
+			$this->db->or_like(array('description'=>$keyword));
+			$this->db->or_like(array('author'=>$keyword));
+		}
 		return $this->db->get('news')->num_rows();
 	}
 	function getById($id)

@@ -16,7 +16,14 @@ if($this->session->flashdata('success'))
 </div>
 <?php
 }?>
-
+<?php
+if($this->input->get('keyword'))
+{
+	?>
+	<b>Search Result For "<?php echo $this->input->get('keyword');?>"</b>
+	<?php
+}
+?>
 <table class="table table-bordered">
 	<tr>
 		<th>Title</th>
