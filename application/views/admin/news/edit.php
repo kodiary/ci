@@ -33,6 +33,18 @@ $this->load->view('admin/header');
 				<div class="clearfix"></div>
 			</div>
 		</div>
+		<div class="form-group">
+			<div class="row">
+				<label class="col-md-3">Image</label>
+				<div class="col-md-9">
+					<input type="file" name="image" class="form-control">
+					<?php if($news->image){?>
+					<img src="<?php echo site_url('uploads/'.$news->image);?>" width="150">
+					<?php }?>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
 		<input type="submit" name="submit" class="btn btn-info" value="Save News">
 	</div>
 	<div class="clearfix"></div>
