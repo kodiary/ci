@@ -2,7 +2,7 @@
 $this->load->view('admin/header'); 
 ?>
 <h1>Edit News</h1>
-<form action="<?php echo site_url('admin/news/update/'.$news->id);?>" method="post">
+<form action="<?php echo site_url('admin/news/update/'.$news->id);?>" method="post" enctype="multipart/form-data">
 	<div class="col-md-7">
 		<div class="form-group">
 			<div class="row">
