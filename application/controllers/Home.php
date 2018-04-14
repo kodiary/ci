@@ -1,5 +1,5 @@
 <?php
-class Home extends CI_Controller
+class Home extends My_controller
 {
 	public function __construct()
 	{
@@ -15,7 +15,7 @@ class Home extends CI_Controller
 		$config['reuse_query_string'] = TRUE;
 		$data['news'] = $this->news_model->getAll($config['per_page'],$offset);
 		$this->pagination->initialize($config);
-		$this->load->view('home',$data);
+		$this->render('home',$data);
 	}
 	function about()
 	{
@@ -24,6 +24,6 @@ class Home extends CI_Controller
 	function detail($id)
 	{
 		$data['model'] = $this->news_model->getById($id);
-		$this->load->view('news_detail',$data);
+		$this->render('news_detail',$data);
 	}
 }

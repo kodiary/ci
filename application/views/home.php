@@ -1,7 +1,4 @@
-	<?php
-	$this->load->view('header');
-	?>
-	
+
 		<?php
 		foreach($news as $n)
 		{
@@ -24,6 +21,3 @@
 		?>
 	
 	<?php echo $this->pagination->create_links();?>
-	<?php
-	$this->load->view('footer');
-	?>
