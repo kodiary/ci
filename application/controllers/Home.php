@@ -21,4 +21,9 @@ class Home extends CI_Controller
 	{
 		$this->load->view('about');
 	}
+	function detail($id)
+	{
+		$data['model'] = $this->news_model->getById($id);
+		$this->load->view('news_detail',$data);
+	}
 }
