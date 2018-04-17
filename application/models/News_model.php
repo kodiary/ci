@@ -44,10 +44,39 @@ class News_model extends CI_Model
 			{
 				$uploaded = $this->upload->data();
 				$arr['image'] = $uploaded['file_name'];
+				$this->resize_image(APPPATH.'../uploads/'.$arr['image'],900);
+				$this->createThumbnail(PPPATH.'../uploads/'.$arr['image'],APPPATH.'../uploads/thumbnail/'.$arr['image'],400,300);
 				//$arr['image'] = 
 			}
 		}
 		$this->db->insert('news',$arr);
+	}
+	function resize_image($source,$width)
+	{
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $source;
+		$config['maintain_ratio'] = TRUE;
+		$config['width']         = $width;
+
+		$this->load->library('image_lib', $config);
+
+		$this->image_lib->resize();
+		$this->image_lib->clear();
+	}
+	function createThumbnail($source,$destination,$width,$height)
+	{
+		$this->load->library('image_lib');
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $source;
+		$config['new_image'] = $destination;
+		$config['maintain_ratio'] = FALSE;
+		$config['width']         = $width;
+		$config['height'] = $height;
+
+		$this->image_lib->initialize($config);
+
+		$this->image_lib->resize();
+		$this->image_lib->clear();
 	}
 	function update($id)
 	{
@@ -65,6 +94,8 @@ class News_model extends CI_Model
 			{
 				$uploaded = $this->upload->data();
 				$arr['image'] = $uploaded['file_name'];
+				$this->resize_image(APPPATH.'../uploads/'.$arr['image'],900);
+				$this->createThumbnail(APPPATH.'../uploads/'.$arr['image'],APPPATH.'../uploads/thumbnail/'.$arr['image'],400,300);
 				//$arr['image'] = 
 			}
 		}
